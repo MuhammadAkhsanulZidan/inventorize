@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_many :users_storages, dependent: :destroy
 
-
   has_many :storages, through: :users_storages
 
 end
