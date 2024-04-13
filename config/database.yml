@@ -25,7 +25,7 @@ development:
   host: localhost
   port: 5432
   username: postgres
-  password: S4v3 4nd r3scu3
+  password: <%= ENV["INVENTORIZE_DATABASE_PASSWORD"] %>
   
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.

@@ -60,5 +60,5 @@ group :development do
   # gem "spring"
 end
 
-
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 gem "devise", "~> 4.9"
