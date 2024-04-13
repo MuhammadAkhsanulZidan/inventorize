@@ -62,3 +62,5 @@ end
 
 gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 gem "devise", "~> 4.9"
+gem "cssbundling-rails", "~> 1.4"
+gem "sassc-rails"
