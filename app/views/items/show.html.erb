@@ -1,10 +1,39 @@
-<p style="color: green"><%= notice %></p>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <%= render 'layouts/sidebar' %>
+        <div class="col px-0">
+            <div id="items" class="">
+                <div class="pt-4 px-3 d-flex justify-content-between">
+                    <h3 class="mb-0"><%=@item.name%></h3>
+                    <div class="d-flex">
+                        <a class="btn btn-secondary text-white ms-1 me-1" href="/<%=@curr_storage.name%>/items/<%=@item.id%>/edit">Edit</a>
+                        <form method="delete" action="/<%=@curr_storage.name%>/items/<%=@item.id%>">
+                            <button class="btn btn-danger text-white ms-1 me-1" type="submit">Delete</button>
+                        </form>
+                        <a href="/<%=@curr_storage.name%>/items"><i class="fs-4 bi-x-circle ms-3"></i></a>            
+                    </div>    
+                </div>
+                <br>
 
-<%= render @item %>
+                <div class="d-flex p-3">
+                    <div class="mx-3" style= "width: 300px; height: 300px; background-color: black;">
+                    </div>
+                    <div>
+                        <p class="text-black-50">Quantity :</p>
+                        <p><%="#{@item.quantity} #{Units::UNIT_NAME[@item.unit]}"%></p>
+                        <br>
+                        <p class=" text-black-50">Description :</p>
+                        <p><%=@item.description%></p>
+                        <br>
+                        <p class=" text-black-50">Cost Price :</p>
+                        <p><%=@item.cost_price%></p>
+                        <br>
+                        <p class=" text-black-50">Selling Price :</p>
+                        <p><%=@item.sell_price%></p>                        
+                    </div>
+                </div>
 
-<div>
-  <%= link_to "Edit this item", edit_item_path(@item) %> |
-  <%= link_to "Back to items", items_path %>
-
-  <%= button_to "Destroy this item", @item, method: :delete %>
+            </div>
+        </div>
+    </div>
 </div>

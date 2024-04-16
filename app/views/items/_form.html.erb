@@ -1,22 +1,50 @@
-<%= form_with(model: item) do |form| %>
-  <% if item.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-      <ul>
-        <% item.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="p-3 border-top border-bottom" style="background-color: <%=Colors::LIGHT_GRAY%>;">
+    <div class="d-flex">
+      <label for="name" style="color: red; width:100px;" class="align-self-center">Name*</label>
+      <input class="form-control ms-5" style="width: 450px;" type="text" name="name" id="name" value="<%=@item.name%>"/>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :storage_id, style: "display: block" %>
-    <%= form.text_field :storage_id %>
+    <br>
+    <div class="d-flex">
+      <label for="quantity" style="color: red; width:100px;" class="align-self-center">Quantity*</label>
+      <input class="form-control ms-5" style="width: 450px;" type="text" name="quantity" id="quantity" value="<%=@item.quantity%>"/>
+    </div>
+    <br>
+    <div class="d-flex">
+      <label for="unit" style="color: red; width:100px;" class="align-self-center">Unit*</label>
+      <select class=" form-select ms-5" style="width: 450px;" name="unit" id="unit" value="<%=@item.unit%>">
+        <option value=<%=Units::UNITS%>>UNITS</option>
+        <option value=<%=Units::PIECES%>>PIECES</option>
+        <option value=<%=Units::PAIRS%>>PAIRS</option>
+        <option value=<%=Units::DOZEN%>>DOZENS</option>
+        <option value=<%=Units::BOXES%>>BOXES</option>
+        <option value=<%=Units::GRAMS%>>GRAMS</option>
+        <option value=<%=Units::KILOGRAMS%>>KILOGRAMS</option>
+      </select>
+    </div>
+    <br>
+      <div class="d-flex">
+        <label for="description" style="color: black; width:100px;" class="align-self-center">Description</label>
+        <textarea class="form-control ms-5" style="width: 450px;" name="description" id="description"><%=@item.description%></textarea>
+      </div>
+    <br>
   </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="py-3">
+    <div class="p-3">
+      <h4>Purchases Information</h4>
+      <br>
+      <div class="d-flex">
+        <label for="cost" style="color: black; width:100px;" class="align-self-center">Cost Price</label>
+        <button class="btn bg-body-secondary ms-5 rounded-end-0">IDR</button>
+        <input class="form-control rounded-start-0" style="width: 400px;" type="text" name="cost_price" id="cost_price" value="<%=@item.cost_price%>"/>
+      </div>      
+    </div>
+    <div class="p-3">
+      <h4>Sales Information</h4>
+      <br>
+      <div class="d-flex">
+        <label for="selling" style="color: black; width:100px;" class="align-self-center">Selling Price</label>
+        <button class="btn bg-body-secondary ms-5 rounded-end-0">IDR</button>
+        <input class="form-control rounded-start-0" style="width: 400px;" type="text" name="sell_price" id="sell_price" value="<%=@item.sell_price%>"/>
+      </div>  
+    </div>
   </div>
-<% end %>

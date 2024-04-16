@@ -10,18 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_13_104930) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_16_100655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "item_sales", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "sale_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_sales_on_item_id"
+    t.index ["sale_id"], name: "index_item_sales_on_sale_id"
+  end
+
   create_table "items", force: :cascade do |t|
+    t.string "name", null: false
     t.bigint "storage_id", null: false
-    t.string "name"
-    t.integer "quantity"
-    t.integer "price"
+    t.string "image"
+    t.integer "quantity", null: false
+    t.integer "unit", null: false
+    t.string "description"
+    t.integer "cost_price"
+    t.integer "sell_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["storage_id"], name: "index_items_on_storage_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.datetime "transaction_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "storages", force: :cascade do |t|
@@ -51,6 +70,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_13_104930) do
     t.index ["user_id"], name: "index_users_storages_on_user_id"
   end
 
+  add_foreign_key "item_sales", "items"
+  add_foreign_key "item_sales", "sales"
   add_foreign_key "items", "storages"
   add_foreign_key "users_storages", "storages"
   add_foreign_key "users_storages", "users"

@@ -1,9 +1,20 @@
-<h1>New item</h1>
-
-<%= render "form", item: @item %>
-
-<br>
-
-<div>
-  <%= link_to "Back to items", items_path %>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <%= render 'layouts/sidebar' %>
+        <div class="col px-0">
+            <div id="items" class="">
+                <div class="p-3 d-flex justify-content-between">
+                    <h3 class="mb-0">New Item</h3>    
+                    <a href="/<%=@curr_storage.name%>/items"><i class="fs-4 bi-x-circle"></i></a>
+                </div>
+                <%= form_tag("/#{@curr_storage.name}/items") do %>
+                <%= render "form", item: @item %>
+                <div class="py-3 d-flex border-top">
+                    <button class="m-3 btn btn-primary m-0" style="width: 100px;" type="submit">create</button>
+                    <a class="m-3 btn btn-secondary m-0" style="width: 100px;" href="/<%=@curr_storage.name%>/items">cancel</a>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>

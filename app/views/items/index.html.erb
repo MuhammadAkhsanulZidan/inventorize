@@ -1,14 +1,51 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Items</h1>
-
-<div id="items">
-  <% @items.each do |item| %>
-    <%= render item %>
-    <p>
-      <%= link_to "Show this item", item %>
-    </p>
-  <% end %>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <%= render 'layouts/sidebar' %>
+        <div class="col py-3">
+            <div id="items">
+                <div class="mt-3 mb-1">
+                        <div class=" border-bottom">
+                            <h3 class="me-3">All items in <%=@curr_storage.name%></h3>
+                        </div>
+                        <br>
+                        <a href="/<%=@curr_storage.name%>/items/new" class="btn btn-primary">Create New Item</a>
+                </div>
+                <div id="item">
+                    <table class="table border-top">
+                        <thead class="">
+                            <tr>
+                                <th scope="col"><p style="width: 150px;">Name</p></th>
+                                <th scope="col"><p style="max-width: 100px;">Quantity</p></th>
+                                <th scope="col"><p class=" text-center" style="width: 75px;">Unit</p></th>
+                                <th scope="col"><p style="width: 175px;">Description</p></th>
+                                <th scope="col"><p style="width: 150px;">Cost Price</p></th>
+                                <th scope="col"><p style="width: 150px;">Selling Price</p></th>
+                                <th scope="col"><p class="text-center">Action</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%@items.each do |item| %>
+                            <tr>
+                                <td class="align-content-center"><%=item.name%></td>
+                                <td class="align-content-center"><%=item.quantity%></td>
+                                <td class="align-content-center text-center"><%=Units::UNIT_NAME[item.unit]%></td>
+                                <td class="align-content-center"><p style="width:175px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"><%=item.description%></p></td>
+                                <td class="align-content-center"><%=item.cost_price%></td>
+                                <td class="align-content-center"><%=item.sell_price%></td>
+                                <td class="d-flex">
+                                    <a class="btn btn-primary text-white me-1" href="/<%=@curr_storage.name%>/items/<%=item.id%>">Show</a>
+                                    <a class="btn btn-secondary text-white ms-1 me-1" href="/<%=@curr_storage.name%>/items/<%=item.id%>/edit">Edit</a>
+                                    <form method="delete" action="/<%=@curr_storage.name%>/items/<%=item.id%>">
+                                        <button class="btn btn-danger text-white ms-1 me-1" type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            
+                            <%end%>
+                        </tbody>
+                    </table>
+                </div>             
+            </div>
+        </div>
+    </div>
 </div>
-
-<%= link_to "New item", new_item_path %>
