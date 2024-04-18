@@ -1,0 +1,39 @@
+
+<div class="p-3 border-top border-bottom" style="background-color: <%=Colors::LIGHT_GRAY%>;">
+<div class="d-flex">
+    <label for="transaction_date" style="color: red; width:125px;" class="align-self-center">Transaction date</label>
+    <input class="form-control ms-5" style="width: 450px;" type="text" name="transaction_date" id="transaction_date" value=""/>
+</div>
+</div>
+<div class="m-3">
+    <table class="table border-top table-responsive">
+        <thead class="">
+            <tr>
+                <th scope="col"><p style="width: 200px;">ITEM DETAILS</p></th>
+                <th scope="col"><p style="width: 150px;">QUANTITY</p></th>
+                <th scope="col"><p style="width: 150px;">DISCOUNT</p></th>
+                <th scope="col"><p style="width: 100px"></p></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="input-row">
+                <td id="item_id">
+                    <select style="width: 100%;" name="search_item" id="search_item"></select>
+                </td>
+                <td>
+                    <input type="text" class="align-content-center w-100 form-control rounded-0" name="amount" id="amount"/>
+                </td>
+                <td class="d-flex">
+                    <input type="text" class="w-100 form-control rounded-0" name="discount_value" id="discount_value"/>
+                    <select class="rounded-0 border-secondary-subtle border-start-0" name="discount_unit" id="discount_unit">
+                        <option value="0">%</option>
+                        <option value="1">IDR</option>
+                    </select>
+                </td>
+                <td>
+                    <a id="add-item-btn" name="add-item-btn" class="btn btn-primary">ADD ITEM</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

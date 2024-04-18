@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <%= render 'layouts/sidebar' %>
+        <div class="col py-3">
+            <div class="mt-3 mb-1">
+                        <div class=" border-bottom">
+                            <h3 class="me-3">All Sales in <%=@curr_storage.name%></h3>
+                        </div>
+                        <br>
+                        <a href="/<%=@curr_storage.name%>/sales/new" class="btn btn-primary">Create New Sale</a>
+                </div>
+        </div>
+    </div>
+</div>
