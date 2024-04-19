@@ -2,7 +2,6 @@ class SalesController < ApplicationController
     before_action :initializeSales, only: %i[index show edit new]
     before_action :set_storage
     before_action :set_sales, only: %i[ show edit update destroy ]
-
     def index
         @curr_storage.sales      
     end
@@ -23,21 +22,21 @@ class SalesController < ApplicationController
     def create_sale
         # Parse the JSON data sent from the client
         rows_data = JSON.parse(params[:rows_data])
-        
-        # Print the received data
+    
+        # Print the received data to the console
         puts "Received data:"
         puts rows_data
-        
+    
         # Respond with a success message
-        render json: { message: 'Data received successfully' }, status: :ok
+        redirect_to root_path, notice: 'Sales created successfully'
       rescue JSON::ParserError => e
-        # Respond with an error message if JSON parsing fails
-        render json: { error: 'Invalid JSON format' }, status: :unprocessable_entity
+        # Handle JSON parsing errors
+        redirect_to root_path, alert: 'Invalid JSON format'
       rescue StandardError => e
-        # Respond with an error message for other errors
-        render json: { error: e.message }, status: :unprocessable_entity
-    end        
-
+        # Handle other errors
+        redirect_to root_path, alert: e.message
+      end
+      
     def edit
 
     end

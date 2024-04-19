@@ -9,11 +9,13 @@
                     <h3 class="mb-0">New Sale</h3>    
                     <a href="/<%=@curr_storage.name%>/sales"><i class="fs-4 bi-x-circle"></i></a>
                 </div>
-                <%= render "form", item: @item %>
-                <div class="py-3 d-flex border-top">
-                    <a id="create-sale-btn" name="create-sale-btn" class="m-3 btn btn-primary m-0" style="width: 100px;">Create Sale</button>
-                    <a class="m-3 btn btn-secondary m-0" style="width: 100px;" href="/<%=@curr_storage.name%>/items">cancel</a>
-                </div>
+                <%= form_tag("/#{@curr_storage.name}/sales/create_sale", method: 'post', id: 'create-sale-form') do %>
+                    <%= render "form", item: @item %>
+                    <div class="py-3 d-flex border-top">
+                        <button id="create-sale-btn" name="create-sale-btn" class="m-3 btn btn-primary m-0" type="submit">Create Sale</button>
+                        <a class="m-3 btn btn-secondary m-0" style="width: 100px;" href="/<%=@curr_storage.name%>/items">cancel</a>
+                    </div>
+                <%end%>
             </div>
         </div>
     </div>

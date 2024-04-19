@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :initializeItems, only: %i[index show edit new]
   before_action :set_storage
+  before_action :init_hash_id
   before_action :set_item, only: %i[ show edit update destroy ]
 
   def index
@@ -37,12 +38,17 @@ class ItemsController < ApplicationController
 
   private
     def initializeItems
-        @selected_side_menu = SideMenu::ITEMS    
+        @selected_side_menu = SideMenu::ITEMS 
+    end
+
+    def init_hash_id
+      @hashids = Hashids.new(ENV["ITEM_SALT_VALUE"], 16)
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = @curr_storage.items.find(params[:id])
+      decoded_id = @hashids.decode(params[:id])[0]
+      @item = @curr_storage.items.find(decoded_id)
     end
 
     # Only allow a list of trusted parameters through.

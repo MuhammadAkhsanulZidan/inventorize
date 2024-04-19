@@ -33,9 +33,9 @@
                                 <td class="align-content-center"><%=item.cost_price%></td>
                                 <td class="align-content-center"><%=item.sell_price%></td>
                                 <td class="d-flex">
-                                    <a class="btn btn-primary text-white me-1" href="/<%=@curr_storage.name%>/items/<%=item.id%>">Show</a>
-                                    <a class="btn btn-secondary text-white ms-1 me-1" href="/<%=@curr_storage.name%>/items/<%=item.id%>/edit">Edit</a>
-                                    <form method="delete" action="/<%=@curr_storage.name%>/items/<%=item.id%>">
+                                    <a class="btn btn-primary text-white me-1" href="/<%=@curr_storage.name%>/items/<%=@hashids.encode(item.id)%>">Show</a>
+                                    <a class="btn btn-secondary text-white ms-1 me-1" href="/<%=@curr_storage.name%>/items/<%=@hashids.encode(item.id)%>/edit">Edit</a>
+                                    <form method="delete" action="/<%=@curr_storage.name%>/items/<%=@hashids.encode(item.id)%>">
                                         <button class="btn btn-danger text-white ms-1 me-1" type="submit">Delete</button>
                                     </form>
                                 </td>
