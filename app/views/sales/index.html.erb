@@ -8,7 +8,37 @@
                         </div>
                         <br>
                         <a href="/<%=@curr_storage.name%>/sales/new" class="btn btn-primary">Create New Sale</a>
-                </div>
+            </div>
+            <div id="sale-list">
+                <table class="table border-top">
+                    <thead class="">
+                        <tr>
+                            <th scope="col"><p style="width: 150px;">Transaction Date</p></th>
+                            <th scope="col"><p style="width: 150px;">Shipping Charge</p></th>
+                            <th scope="col"><p style="width: 150px;">Total Price</p></th>
+                            <th scope="col"><p style="width: 150px;">Note</p></th>
+                            <th scope="col"><p class="text-center">Action</p></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%@sales.each do |sale| %>
+                        <tr>
+                            <td class="align-content-center"><%=sale.transaction_date%></td>
+                            <td class="align-content-center"><%=sale.shipping_charge%></td>
+                            <td class="align-content-center"><%=sale.total_amount%></td>
+                            <td class="align-content-center"><p style="width:150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"><%=sale.note%></p></td>
+                            <td class="d-flex">
+                                <a class="btn btn-primary text-white me-1" href="/<%=@curr_storage.name%>/items/<%=@hashids.encode(sale.id)%>">Show</a>
+                                <a class="btn btn-secondary text-white ms-1 me-1" href="/<%=@curr_storage.name%>/items/<%=@hashids.encode(sale.id)%>/edit">Edit</a>
+                                <form method="delete" action="/<%=@curr_storage.name%>/items/<%=@hashids.encode(sale.id)%>">
+                                    <button class="btn btn-danger text-white ms-1 me-1" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>                        
+                        <%end%>
+                    </tbody>
+                </table>
+            </div> 
         </div>
     </div>
 </div>

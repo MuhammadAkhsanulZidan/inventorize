@@ -17,6 +17,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_16_102308) do
   create_table "item_sales", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.bigint "sale_id", null: false
+    t.integer "quantity"
+    t.integer "discount_val"
+    t.integer "discount_unit"
+    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_item_sales_on_item_id"
@@ -38,7 +42,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_16_102308) do
   end
 
   create_table "sales", force: :cascade do |t|
-    t.datetime "transaction_date"
+    t.date "transaction_date"
+    t.text "note"
+    t.integer "shipping_charge"
+    t.integer "total_amount"
     t.bigint "storage_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

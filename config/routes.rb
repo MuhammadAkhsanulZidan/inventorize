@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   post ':storage/sales' => 'sales#create'
   get ':storage/sales/:id/edit' => 'sales#edit'
   put ':storage/sales/:id' => 'sales#update'
-  get ':storage/search_item', to: 'search#search_item'
-  post ':storage/sales/create_sale', to: 'sales#create_sale'
+  get ':storage/sales/search-item', to: 'sales#search_item'
+  post ':storage/sales/create-sale', to: 'sales#create_sale'
 
   # Defines the root path route ("/")
   root "dashboard#index"

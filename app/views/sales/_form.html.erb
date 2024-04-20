@@ -22,10 +22,10 @@
                     <select style="width: 100%;" name="search_item" id="search_item"></select>
                 </td>
                 <td>
-                    <input type="text" class="align-content-center w-100 form-control rounded-0" name="amount" id="amount"/>
+                    <input type="text" class="align-content-center w-100 form-control rounded-0" name="quantity" id="quantity" value="0"/>
                 </td>
                 <td class="d-flex">
-                    <input type="text" class="w-100 form-control rounded-0" name="discount_value" id="discount_value"/>
+                    <input type="text" class="w-100 form-control rounded-0" name="discount_value" id="discount_value" value="0"/>
                     <select class="rounded-0 border-secondary-subtle border-start-0" name="discount_unit" id="discount_unit">
                         <option value="0">%</option>
                         <option value="1">IDR</option>
@@ -43,21 +43,21 @@
 </div>
 <div class="d-flex pb-3">
     <div class="p-3 w-50">
-        <label for="transaction_note" class=" align-self-start">Transaction Note</label>
-        <textarea class="form-control w-100" name="transaction_note" id="transaction_note"></textarea>
+        <label for="note" class=" align-self-start">Transaction Note</label>
+        <textarea class="form-control w-100" name="note" id="note"></textarea>
     </div>
-    <div class="p-3 w-50 h-auto" style="background-color: <%=Colors::LIGHT_GRAY%>;">
-        <div class="d-flex justify-content-between">
-            <div class="w-50">
-                <!--<p class="fw-bold">Sub total (IDR)</p>-->
-                <!--<p class="my-4">Shipping charge</p>-->
-                <p class="fw-bold">Total (IDR) </p>
-            </div>
-            <div class="w-50 align-content-start me-2">
-                <!--<p class="fw-bold">120</p>-->
-                <!--<input class="my-4" type="text" id="shipping_charge" name="shipping_charge" value="0"/>-->
-                <p class="fw-bold">0</p>
-            </div>
+    <div class="p-3 w-50 me-2 border-top border-start border-end border-bottom" style="background-color: <%=Colors::LIGHT_GRAY%>;">
+        <div class="d-flex my-4">
+            <p class="w-50 fw-bold">Sub Total (IDR)</p>
+            <p class="w-50 fw-bold ms-2" id="sub_total_amount">0</p>
+        </div>
+        <div class="d-flex my-4">
+            <p class="w-50">Shipping charge</p>
+            <input class="w-50 ms-2" type="text" id="shipping_charge" name="shipping_charge" value="0"/>
+        </div>
+        <div class="d-flex my-4">
+            <p class="w-50 fw-bold">Total (IDR)</p>
+            <input class="w-50 fw-bold ms-2 border-0 bg-transparent" type="text" id="total_amount" value="0" name="total_amount" />
         </div>
     </div>
 </div>
